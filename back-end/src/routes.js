@@ -1,13 +1,11 @@
-const routes = require('express').Router()
+const app = require('express').Router()
 const { Charge } = require('./app/models')
+const {chargeCreateValidatorCreate, validate } = require('./validator/chargeValidator')
 
-Charge.create({
-    name:'Richard Campos',
-    email:'richardfcampos@gmail.com',
-    product_service_description:'Desenvolvimento de sistemas',
-    product_service_price:5000,
-    installment_plan:5,
-    due_date:5,
-})
+const ChargeController = require('../src/app/controller/ChargeController')
 
-module.exports = routes
+app.route('/charge')
+    .get(ChargeController.getCharge)
+    .post(chargeCreateValidatorCreate(), validate, ChargeController.store)
+
+module.exports = app
