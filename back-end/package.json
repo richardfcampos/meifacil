@@ -18,7 +18,9 @@
     "faker": "^4.1.0",
     "nodemon": "^2.0.1",
     "sequelize": "^5.21.2",
-    "tedious": "^6.6.2"
+    "swagger-ui-express": "^4.1.2",
+    "tedious": "^6.6.2",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "jest": "^24.9.0",

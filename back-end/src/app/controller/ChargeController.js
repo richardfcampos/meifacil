@@ -9,8 +9,12 @@ class ChargeController {
     }
 
     async getCharge(req, res) {
-        const charge = await ChargeService.getCharge(req, res)
+        const charge = await ChargeService.getCharges(req, res)
         return charge
+    }
+
+    async getById(req, res) {
+        const charge = await ChargeService.getById(req, res)
     }
 }
 

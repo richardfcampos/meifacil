@@ -24,7 +24,6 @@ module.exports = {
         email:{
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true
         },
         product_service_description:{
         type: Sequelize.STRING,

@@ -16,21 +16,10 @@ describe("Charge", () => {
         const response = await request(app)
             .get(`/charge`)
             .query({
-                email: charge.dataValues.email
+                id: charge.dataValues.id
             })
         expect(response.status).toBe(200)
 
-    })
-
-    it("should not have this charged saved", async () => {
-        const charge = await factory.create('Charge' )
-
-        const response = await request(app)
-            .get(`/charge`)
-            .query({
-                email: 'bla@bla.bla'
-            })
-        expect(response.status).toBe(401)
     })
 
     it("should save charge", async () => {
@@ -64,7 +53,7 @@ describe("Charge", () => {
         }
 
         const getRandomProperty = (data) => {
-            var keys = Object.keys(data)
+            const keys = Object.keys(data)
             return data[keys[ keys.length * Math.random() << 0]];
         }
         const getKeyByValue = (object, value) => {
@@ -73,11 +62,23 @@ describe("Charge", () => {
         const ramdomValue = getRandomProperty(data)
         const randomProperty = getKeyByValue(data,ramdomValue)
         delete data[randomProperty]
+        console.log(data)
 
         const response = await request(app)
             .post('/charge')
             .send(data)
+
         expect(response.status).toBe(422)
 
     })
+
+    it("should not get charge, no ID", async () => {
+
+        const response = await request(app)
+            .get(`/charge`)
+
+        expect(response.status).toBe(401)
+
+    })
+
 })

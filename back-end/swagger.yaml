@@ -1,0 +1,125 @@
+swagger: "2.0"
+info:
+  description: "Essa api é do desafio mei facil"
+  version: "1.0.0"
+  title: "Desafio mei Mei Fácil"
+  contact:
+    email: "richardfcampos@gmail.com"
+  license:
+    name: ""
+    url: ""
+host: ""
+basePath: ""
+tags:
+  - name: "Cobranças"
+    description: "Desafio de cobrança mei Fácil"
+    externalDocs:
+      description: "Find out more"
+      url: "http://swagger.io"
+schemes:
+  - "http"
+paths:
+  /charge:
+    post:
+      tags:
+        - "pet"
+      summary: "Adiciona nova cobrança"
+      description: ""
+      operationId: "addPet"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Pet object that needs to be added to the store"
+          required: true
+          schema:
+            $ref: "#/definitions/Cobrança"
+      responses:
+        401:
+          description: "Invalid input"
+      security:
+        - petstore_auth:
+            - "write:pets"
+            - "read:pets"
+    get:
+      tags:
+        - "Cpbrança"
+      summary: "Update an existing pet"
+      description: ""
+      operationId: "Pegar a cobrança"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "query"
+          name: "id"
+          description: "Colocar o id da cobrança"
+          required: true
+          schema:
+            $ref: "#/definitions/GetCobrança"
+          style: "form"
+          explode: true
+      responses:
+        401:
+          description: "Cobraça não encontrada"
+
+  /charges:
+    get:
+      tags:
+        - "Cpbranças"
+      summary: "Update an existing pet"
+      description: ""
+      operationId: "Pegar a cobrança"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      responses:
+        401:
+          description: "Cobraças não encontradas"
+
+definitions:
+  Cobrança:
+    type: "object"
+    required:
+      - "name"
+      - "email"
+      - "produc_service_description"
+      - "produc_service_price"
+      - "installment_plan"
+      - "due_date"
+    properties:
+      email:
+        type: "string"
+        exemple: "fulano@teste.com"
+      name:
+        type: "string"
+        exemple: "Fulano da Silva"
+      product_service_description:
+        type: "string"
+        exemple: "Limpeza de ar-condicionado"
+      product_service_price:
+        type: "number"
+        exemple: "300.00"
+      installment_plan:
+        type: "integer"
+        description: "Quantidade de parcelas"
+        exemple: 5
+      due_date:
+        type: "date"
+        exemple: "01/01/2020"
+  GetCobrança:
+    type: "object"
+    required:
+      - "id"
+    properties:
+      email:
+        type: "integer"
+        exemple: 1
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"

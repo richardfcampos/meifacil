@@ -3,19 +3,25 @@ const { Charge } = require('../models')
 class ChargeService {
     async store(req, res){
         const charge = await Charge.create(req.body)
-        if (!charge){
-            return res.status(401).json({message: 'Não foi possível cobrança'})
-        }
         return  res.json(
             charge
         )
     }
 
-    async getCharge(req, res) {
-        const charge = await Charge.findOne({where: req.query})
-        if (!charge) {
-            return res.status(401).json({message: 'Cobrança não encontrado'})
+    async getCharges(req, res) {
+        const charge = await Charge.findAll()
+
+        return  res.json(
+            charge
+        )
+    }
+
+    async getById(req, res) {
+        if (!req.query || !req.query.id){
+            return res.status(401).json({message: 'Está faltando o ID'})
         }
+        const charge = await Charge.findOne({ where: {id: req.query.id}})
+
         return  res.json(
             charge
         )

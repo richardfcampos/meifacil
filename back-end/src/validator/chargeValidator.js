@@ -5,6 +5,8 @@ const chargeCreateValidatorCreate = () => {
         body('email').exists().isEmail().withMessage('Falta Preencher o email'),
         body('product_service_description').exists().isString()
             .withMessage('Falta Preencher a descrição do serviço ou produto'),
+        body('product_service_price').exists().isNumeric()
+            .withMessage('Falta Preencher a descrição do serviço ou produto'),
         body('installment_plan').exists().isInt({min: 1, max:15})
             .withMessage('Falta Preencher uma parcela correta'),
         body('due_date').exists().withMessage('Falta Preencher a data de validade'),
