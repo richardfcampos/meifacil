@@ -1,6 +1,6 @@
 import  React,  { useState } from 'react'
 import Header from "../../component/header";
-import CostumInput from "../../component/CostumInput";
+import CostumInput from "../../component/costumInput";
 import BalloonMsg from "../../component/balloonMsg";
 import Button from "../../component/button";
 
@@ -18,7 +18,7 @@ const ClientInstallmentPlan = (props) => {
 
     const Continue = () => {
         if (installmentPlan){
-            alert()
+            history.push('/dtVencCliente')
         }
     }
 

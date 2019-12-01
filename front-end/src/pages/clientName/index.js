@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Header from "../../component/header"
 import Button from "../../component/button"
-import CostumInput from "../../component/CostumInput"
+import CostumInput from "../../component/costumInput"
 import BalloonMsg from "../../component/balloonMsg"
 import { MdInfoOutline } from "react-icons/all"
 import styled from "styled-components"

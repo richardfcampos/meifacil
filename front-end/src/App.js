@@ -6,6 +6,8 @@ import ClintEmail from "./pages/clientEmail"
 import ClientProdServ from "./pages/clientProductService"
 import ClientProdServValue from "./pages/clientProdServValue"
 import ClientInstallmentPlan from "./pages/clientInstallmentPlan"
+import ClientDueDate from "./pages/clientDuoDate"
+import ClientChargeReview from "./pages/clientChargeReview"
 
 function App() {
   return (
@@ -30,6 +32,14 @@ function App() {
             <Route
                 path='/valorParcCliente'
                 render={({ match, history }) => <ClientInstallmentPlan history={ history }/>}
+            />
+            <Route
+                path='/dtVencCliente'
+                render={({ match, history }) => <ClientDueDate history={ history }/>}
+            />
+            <Route
+                path='/resumoCobranca'
+                render={({ match, history }) => <ClientChargeReview history={ history }/>}
             />
             <Route
                 path='/'

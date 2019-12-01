@@ -2,6 +2,8 @@ import React from 'react'
 import styled from "styled-components"
 import CurrencyFormat from 'react-currency-format'
 import Select from 'react-select'
+import DatePicker from "react-datepicker"
+import "react-datepicker/dist/react-datepicker.css"
 
 const Container = styled.div` 
   padding: 15px;
@@ -42,6 +44,27 @@ const MyMoneyInput = styled(CurrencyFormat)`
     color: #c3c5cd;
     font-weight: bolder;
   } 
+`
+
+
+const MyDateInput = styled(DatePicker)`
+  width: 86vw;
+  color:#757575;  
+  height: 50px;
+  border-radius: 10px 10px 2px 2px;
+  border-style: solid;
+  font-size: 17px;
+  padding-left: 20px;
+  border-color: #dddee3;
+  &:focus {
+    outline: none;
+  } 
+  ::placeholder {
+    color: #c3c5cd;
+    font-weight: bolder;
+  } 
+
+
   
 `
 const customStyles = {
@@ -84,8 +107,8 @@ const customStyles = {
 
 
 const CostumInput = (props) => {
-    const { label, change, value, placeholder, type='normal' } = props
-
+    const { label, change, value, placeholder, type='normal', moment=null } = props
+    console.log(value)
     return(
         <Container>
             <h2>{ label }</h2>
@@ -108,14 +131,21 @@ const CostumInput = (props) => {
                 />
             }
 
-            { type === 'select' &&
+            {type === 'select' &&
                 <Select
                     styles={customStyles}
-                    placeholder='Teste'
                     defaultValue={value[0]}
                     options={value}
                 >
                 </Select>
+            }
+            { type === 'date' &&
+            <MyDateInput
+                selected={ value }
+                onChange={date => change(date)}
+                dateFormat="dd/MM/yyyy"
+            />
+
             }
         </Container>
     )
