@@ -6,7 +6,15 @@ import Button from "../../component/button";
 
 const ClientInstallmentPlan = (props) => {
     const { history } = props
-    const [installmentPlan, setInstallmentPlan] = useState('')
+    const options = [
+        {value: 1, label: '1 Parcela de '},
+        {value: 2, label: '2 Parcela de '},
+        {value: 3, label: '3 Parcela de '},
+        {value: 4, label: '4 Parcela de '},
+        {value: 5, label: '5 Parcela de '},
+        {value: 6, label: '6 Parcela de '},
+    ]
+    const [installmentPlan, setInstallmentPlan] = useState(options)
 
     const Continue = () => {
         if (installmentPlan){
@@ -17,13 +25,13 @@ const ClientInstallmentPlan = (props) => {
     return(
         <>
             <Header title='Enviar nova Cobrança'
-                    back={() => history.push('/emailcliente')}/>
+                    back={() => history.push('/valorProdServCliente')}/>
             <CostumInput
-                label='Qual o valor do produto?'
+                label='Em quantas vezes o seu cliente pode parcelar?'
                 change={ setInstallmentPlan }
                 value={ installmentPlan }
                 placeholder='R$ 0,00'
-                type='money'
+                type='select'
             />
             <BalloonMsg />
             <Button name='CONTINUAR'

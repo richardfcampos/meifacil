@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from "styled-components"
 import CurrencyFormat from 'react-currency-format'
+import Select from 'react-select'
 
 const Container = styled.div` 
   padding: 15px;
@@ -43,9 +44,48 @@ const MyMoneyInput = styled(CurrencyFormat)`
   } 
   
 `
+const customStyles = {
+    input: (provided, state) => {
+        return { ...provided, height: '40px', borderRadius:'15px',
+        };
+    },
+    container: (provided, state) => {
+        return { ...provided, boderRadius:'15px',
+        boxShadow: "0 4px 4px 0 rgba(0, 0, 0, 0.2), 1px 0 0 0 rgba(0, 0, 0, 0.19)",
+        };
+    },
+    indicatorSeparator: (provided, state) => {
+        return { ...provided,
+            height: '100%',
+            top:'10px',
+            marginTop: 'unset',
+            marginBottom: 'unset',
+        };
+    },
+    indicatorsContainer: (provided, state) => {
+        return { ...provided,
+            width: '56px',
+            background: '#f0b400',
+        };
+    },
+    dropdownIndicator: (provided, state) => {
+        return { ...provided,
+            color: '#fff',
+            position: 'relative',
+            left: '10px'
+        };
+    },
+    singleValue: (provided, state) => {
+        return { ...provided,
+            color: '#5eafbb',
+        };
+    },
+}
+
 
 const CostumInput = (props) => {
     const { label, change, value, placeholder, type='normal' } = props
+
     return(
         <Container>
             <h2>{ label }</h2>
@@ -66,7 +106,16 @@ const CostumInput = (props) => {
                     value={ value }
                     onChange={ event => change(event.target.value)}
                 />
+            }
 
+            { type === 'select' &&
+                <Select
+                    styles={customStyles}
+                    placeholder='Teste'
+                    defaultValue={value[0]}
+                    options={value}
+                >
+                </Select>
             }
         </Container>
     )

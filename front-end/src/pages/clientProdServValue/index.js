@@ -11,7 +11,7 @@ const ClientProdServValue = (props) => {
 
     const Continue = () => {
         if (prodServValue){
-            alert()
+           history.push('/valorParcCliente')
         }
     }
 
