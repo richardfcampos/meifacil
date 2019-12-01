@@ -4,6 +4,8 @@ import Inicial from "./pages/inicial"
 import ClientName from "./pages/clientName"
 import ClintEmail from "./pages/clientEmail"
 import ClientProdServ from "./pages/clientProductService"
+import ClientProdServValue from "./pages/clientProdServValue"
+import ClientInstallmentPlan from "./pages/clientInstallmentPlan"
 
 function App() {
   return (
@@ -20,6 +22,14 @@ function App() {
             <Route
                 path='/prodServCliente'
                 render={({ match, history }) => <ClientProdServ history={ history }/>}
+            />
+            <Route
+                path='/valorProdServCliente'
+                render={({ match, history }) => <ClientProdServValue history={ history }/>}
+            />
+            <Route
+                path='/valorParcCliente'
+                render={({ match, history }) => <ClientInstallmentPlan history={ history }/>}
             />
             <Route
                 path='/'
