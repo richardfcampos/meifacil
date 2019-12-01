@@ -1,0 +1,49 @@
+import React from 'react'
+import styled from "styled-components"
+
+const ValueOutPut = styled.div`
+  height: 20px;
+  width: 35%;
+  border: none;
+  font-size: 25px;
+  text-align: center;
+  font-weight: bolder;
+  color: #0096af;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #0096af;
+`
+
+const Description = styled.div`
+  font-size: 15px;
+  color: grey;
+  display: block;
+  padding-top: 10px;
+`
+
+const Container = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center; 
+  
+`
+
+const ShowValue = (props) => {
+    const { value, desc } =  props
+    return (
+        <>
+        <Container>
+            <ValueOutPut value={(value) ? `R$ ${value}` : 'R$ 0,00' } >
+                {(value) ? `R$ ${value}` : 'R$ 0,00' }
+            </ValueOutPut>
+        </Container>
+        <Container>
+            <Description>
+                { desc }
+            </Description>
+        </Container>
+        </>
+    )
+}
+
+export default ShowValue
