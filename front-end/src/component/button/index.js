@@ -5,6 +5,7 @@ const Mybutton = styled.button`
   height: 60px;
   width: 100%;
   font-weight: bold;
+  font-size: 15px;
   border-radius: 5px;
   background: #ffcd36;
   border: none;
@@ -23,10 +24,10 @@ const SectionBotton = styled.div`
 `
 
 const Button = (props) => {
-    const { name , callback} = props
+    const { name , callback, style={}} = props
     return(
         <SectionBotton>
-            <Mybutton onClick={ () => callback() }>
+            <Mybutton onClick={ () => callback() } style={style}>
                 { name }
             </Mybutton>
         </SectionBotton>

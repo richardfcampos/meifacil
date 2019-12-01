@@ -8,7 +8,7 @@ const MyHeader = styled.header`
     color: #fff;
     font-family: "sans-serif";
     font-weight: bold;
-    font-size: 18px;
+    font-size: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,11 +21,12 @@ const BackArrow = styled(FaArrowLeft)`
   margin-left: 20px;
   color: #fff;
 `
+
 const Header = (props) => {
-    const { title } = props
+    const { title, back=()=>{} } = props
     return (
         <MyHeader>
-            <BackArrow/>
+            <BackArrow onClick={ () => back()}/>
             <span className='header-title'>
                 { title }
             </span>
