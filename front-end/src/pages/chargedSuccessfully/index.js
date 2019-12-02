@@ -1,11 +1,9 @@
 import React from 'react'
 import Header from "../../component/header"
-import ShowValue from "../../component/showValue"
 import CharReviewList from "../../component/chargeReviewList"
 import BalloonMsg from "../../component/balloonMsg"
 import Button from "../../component/button"
 import styled from "styled-components"
-import {GoCreditCard} from "react-icons/all"
 import ReactSVG from "react-svg"
 import CreditCard from '../../assets/img/credit-card.svg'
 import ShareDiv from "../../component/shareDiv"
@@ -53,14 +51,6 @@ const ContainerMsg = styled.div`
   }
 `
 
-const Share = styled.div`
-  height: 70px;
-  width: 100%;
-  background: red;
-  position: fixed;
-  bottom: 30vw;
-  background: #fff;
-`
 
 const ChargedSuccessfully = (props) => {
     const { history } = props

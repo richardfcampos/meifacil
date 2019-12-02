@@ -6,6 +6,8 @@ import Button from "../../component/button"
 import ShowValue from "../../component/showValue"
 import CharReviewList from "../../component/chargeReviewList"
 import { GoCreditCard} from "react-icons/all"
+import {useSelector} from "react-redux";
+import moment from "moment";
 
 const TopDiv = styled.div`
   width: 100%;
@@ -51,13 +53,13 @@ const ContainerCard = styled.div`
 
 const ClientChargeReview = (props) => {
     const { history } = props
-
+    const data = useSelector(state => state.charge)
     const dados = {
-        name: 'Richard Fonseca Campos',
-        email: 'richardfcampos@gmail.com',
-        duoDate: '11/10/2020',
-        product_service_price: '15,00',
-        installment_plan: '1'
+        name: data.name,
+        email: data.email,
+        duoDate:moment(data.due_date).format('DD/MM/YYYY') ,
+        product_service_price: data.product_service_price,
+        installment_plan: data.installment_plan
     }
 
     const Continue = () => {
@@ -72,7 +74,8 @@ const ClientChargeReview = (props) => {
             </ContainerCard>
             <TopDiv>
                 <ShowValue
-                    desc='Nome do Serviço'
+                    value={data.product_service_price}
+                    desc={data.product_service_description}
                     valStyle={{position: 'relative', bottom: '12vw'}}
                     descStyle={{position: 'relative', bottom: '12vw'}}
                 />

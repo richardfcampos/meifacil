@@ -1,25 +1,34 @@
-import  React,  { useState } from 'react'
+import  React from 'react'
 import Header from "../../component/header";
 import CostumInput from "../../component/costumInput";
 import BalloonMsg from "../../component/balloonMsg";
 import Button from "../../component/button";
+import { parcelas } from "../../utils/parcelas"
+import {useDispatch, useSelector} from "react-redux";
+import {setInstallmentPlan} from "../../actions";
 
 const ClientInstallmentPlan = (props) => {
     const { history } = props
-    const options = [
-        {value: 1, label: '1 Parcela de '},
-        {value: 2, label: '2 Parcela de '},
-        {value: 3, label: '3 Parcela de '},
-        {value: 4, label: '4 Parcela de '},
-        {value: 5, label: '5 Parcela de '},
-        {value: 6, label: '6 Parcela de '},
-    ]
-    const [installmentPlan, setInstallmentPlan] = useState(options)
+    const dispatch = useDispatch()
+    const installment_plan = useSelector(state => state.charge.installment_plan)
+    const product_service_price = useSelector(state => state.charge.product_service_price)
+    if (!product_service_price) {
+        history.push('/valorProdServCliente')
+    }
+    const options = parcelas.map((parcel) => {
+        let valor = (1+(parcel.porc / 100))*product_service_price.replace('.', '').replace(',', '.')
+        valor = (parcel.porc > 0) ? (valor/ parcel.value).toFixed(2) : valor
+        return({
+            value:parcel.value,
+            label: ` ${parcel.value} de ${valor}`
+        })
+    })
 
+    const setInstallmentPlanDis = async (selectedOption) => {
+        await setInstallmentPlan(dispatch, selectedOption.value)
+    }
     const Continue = () => {
-        if (installmentPlan){
-            history.push('/dtVencCliente')
-        }
+        history.push('/dtVencCliente')
     }
 
     return(
@@ -28,8 +37,9 @@ const ClientInstallmentPlan = (props) => {
                     back={() => history.push('/valorProdServCliente')}/>
             <CostumInput
                 label='Em quantas vezes o seu cliente pode parcelar?'
-                change={ setInstallmentPlan }
-                value={ installmentPlan }
+                change={ setInstallmentPlanDis }
+                options={ options }
+                selectedOption={ installment_plan }
                 placeholder='R$ 0,00'
                 type='select'
             />

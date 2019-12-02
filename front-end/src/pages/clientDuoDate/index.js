@@ -1,23 +1,26 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Header from "../../component/header"
 import CostumInput from "../../component/costumInput"
 import BalloonMsg from "../../component/balloonMsg"
 import Button from "../../component/button"
-import moment from "moment"
+import {useDispatch, useSelector} from "react-redux";
+import {setDueDate} from "../../actions";
 
 const ClientDueDate = (props) => {
     const { history } = props
-    const [dueDate, setDueDate] = useState(new Date())
+    const due_date = useSelector(state => state.charge.due_date)
+    const dispatch = useDispatch()
+
     const Continue = () =>  {
-        if (dueDate){
+        if (due_date){
             history.push('/resumoCobranca')
         }
     }
-    const changeDate = (date) => {
-        setDueDate(date)
+    const changeDate = async(date) => {
+        await setDueDate(dispatch, date)
     }
 
-    const bottonStyle = (dueDate) ? {} : { background: '#b1b4be' }
+    const bottonStyle = (due_date) ? {} : { background: '#b1b4be' }
 
     return (
         <>
@@ -26,7 +29,7 @@ const ClientDueDate = (props) => {
             <CostumInput
                 label='Qual a data de vencimento?'
                 change={ changeDate }
-                value={ dueDate }
+                value={ due_date }
                 placeholder=''
                 type='date'
             />

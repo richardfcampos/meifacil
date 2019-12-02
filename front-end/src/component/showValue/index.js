@@ -4,7 +4,7 @@ import renderHTML from 'react-render-html'
 
 const ValueOutPut = styled.div`
   height: 20px;
-  width: 35%;
+  width: 60%;
   border: none;
   font-size: 25px;
   text-align: center;

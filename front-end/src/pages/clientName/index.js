@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useSelector, useDispatch } from "react-redux";
 import Header from "../../component/header"
 import Button from "../../component/button"
 import CostumInput from "../../component/costumInput"
 import BalloonMsg from "../../component/balloonMsg"
 import { MdInfoOutline } from "react-icons/all"
 import styled from "styled-components"
+import { setName } from "../../actions"
 
 const Msg = styled.div`
   width: 100%;
@@ -26,8 +28,12 @@ const Info = styled(MdInfoOutline)`
 
 const ClientName = (props) => {
     const { history } = props
-    const [name, setName] = useState('')
+    const name = useSelector(state => state.charge.name)
+    const dispatch = useDispatch()
 
+    const setNameDisp = async (value) => {
+        await setName(dispatch, value)
+    }
     const Continue = () => {
         if (name.length > 5) {
             history.push('/emailCliente')
@@ -41,7 +47,7 @@ const ClientName = (props) => {
             <Header title='Enviar nova Cobrança' back={() => history.push('/')}/>
             <CostumInput
                 label='Qual é o nome completo do seu cliente?'
-                change={ setName }
+                change={ setNameDisp }
                 value={name}
                 placeholder='Nome Completo'
             />

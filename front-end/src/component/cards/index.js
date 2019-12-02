@@ -74,20 +74,7 @@ const Circle = styled.div `
       top: 7px;
     }
 `
-const ColLeft = styled.div`
-  height: 100%;
-  width: 50%;
-  margin-top: 25px;
-  margin-left: 20px;
-`
 
-const LabelCard = styled.span`
-    position: relative;
-    color: gray;
-    top: 24px;
-    font-size: 15px;
-    right: 27px;
-`
 const GridTop = styled.div`
   display: grid;
   grid-template-columns: 7fr 1fr;
@@ -95,12 +82,6 @@ const GridTop = styled.div`
   width: 100%;
 `
 
-const ColRight = styled.div`
-  height: 100%;
-  width: 50%;
-  margin-top: 7px;
-  margin-right: 7px;
-`
 
 const GridMiddle = styled.div`
   display: grid;

@@ -1,5 +1,4 @@
 import React from 'react'
-import {FiXCircle} from "react-icons/all"
 import styled from "styled-components"
 import { FiMessageSquare } from "react-icons/all"
 

@@ -107,8 +107,7 @@ const customStyles = {
 
 
 const CostumInput = (props) => {
-    const { label, change, value, placeholder, type='normal', moment=null } = props
-    console.log(value)
+    const { label, change, value, placeholder, type='normal', options, selectedOption } = props
     return(
         <Container>
             <h2>{ label }</h2>
@@ -134,8 +133,9 @@ const CostumInput = (props) => {
             {type === 'select' &&
                 <Select
                     styles={customStyles}
-                    defaultValue={value[0]}
-                    options={value}
+                    defaultValue={(selectedOption) ? options[selectedOption -1] : options[0]}
+                    options={options}
+                    onChange={ selectedOptions => change(selectedOptions)}
                 >
                 </Select>
             }

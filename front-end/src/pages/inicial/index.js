@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import {useDispatch, useSelector } from 'react-redux'
 import Header from "../../component/header"
 import Button from "../../component/button"
 import styled from "styled-components"
 import ShowValue from "../../component/showValue"
-import Card from "../../component/cards";
+import Card from "../../component/cards"
+import { fetchCharges } from "../../actions"
 
 const Container = styled.div`
   height: 100%;
@@ -40,7 +42,16 @@ const BottomDiv = styled.div`
 
 const Inicial = (props) => {
     const { history } = props
-    console.log(history)
+    const dispatch = useDispatch()
+    const charges = useSelector(state => state.charge.charges)
+    async function fetchData() {
+        await fetchCharges(dispatch)
+    }
+
+
+    useEffect(  () => {
+        fetchData()
+    }, [])
     return (
         <Container>
             <Header title='Enviar Cobrança'/>
