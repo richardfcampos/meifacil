@@ -5,6 +5,7 @@ import BalloonMsg from "../../component/balloonMsg"
 import Button from "../../component/button"
 import ShowValue from "../../component/showValue"
 import CharReviewList from "../../component/chargeReviewList"
+import { GoCreditCard} from "react-icons/all"
 
 const TopDiv = styled.div`
   width: 100%;
@@ -33,6 +34,19 @@ const BottomDiv = styled.div`
     padding-right: 20px; 
 `
 
+const CrediCard = styled(GoCreditCard)`
+  font-size: 30px;
+  text-align: center;
+  position:relative;
+  margin-top: 7vw;
+`
+
+const ContainerCard = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
 
 
 const ClientChargeReview = (props) => {
@@ -53,6 +67,9 @@ const ClientChargeReview = (props) => {
         <>
             <Header title='Enviar nova Cobrança'
                     back={() => history.push('/dtVencCliente')}/>
+            <ContainerCard>
+                <CrediCard />
+            </ContainerCard>
             <TopDiv>
                 <ShowValue
                     desc='Nome do Serviço'
