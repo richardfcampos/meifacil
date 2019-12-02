@@ -59,6 +59,7 @@ const Inicial = (props) => {
                     circNum='0'
                     label='A Vencer'
                     value={''}
+                    callback={() => alert()}
                 />
                 <Card
                     icon='late'

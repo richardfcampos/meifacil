@@ -123,10 +123,10 @@ const GridBottom = styled.div`
 `
 
 const Card = (props) => {
-    const { icon, circNum, label, value } = props
+    const { icon, circNum, label, value, callback=()=>{} } = props
     return(
         <>
-            <MyCard>
+            <MyCard onClick={() => callback()}>
                 <GridTop>
                     { icon === 'coins' && <Coin />}
                     { icon === 'tocome' && <ToCome />}

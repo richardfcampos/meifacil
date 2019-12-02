@@ -47,6 +47,10 @@ function App() {
                 render={({ match, history }) => <ChargedSuccessfully history={ history }/>}
             />
             <Route
+                path='/cobrancaVencer'
+                render={({ match, history }) => <ChargedSuccessfully history={ history }/>}
+            />
+            <Route
                 path='/'
                 render={({ match, history }) => <Inicial history={ history }/>}
             />

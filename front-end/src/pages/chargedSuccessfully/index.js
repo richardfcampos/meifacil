@@ -73,7 +73,7 @@ const ChargedSuccessfully = (props) => {
     }
 
     const Continue = () => {
-        history.push('/cobrancaGerada')
+        history.push('/')
     }
 
     return (
@@ -97,7 +97,7 @@ const ChargedSuccessfully = (props) => {
             <BalloonMsg />
             <ShareDiv/>
 
-            <Button name='ENVIAR COBRANÇA'
+            <Button name='VOLTAR AO INÍCIO'
                     callback={ Continue }
             />
         </>
