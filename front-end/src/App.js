@@ -8,6 +8,7 @@ import ClientProdServValue from "./pages/clientProdServValue"
 import ClientInstallmentPlan from "./pages/clientInstallmentPlan"
 import ClientDueDate from "./pages/clientDuoDate"
 import ClientChargeReview from "./pages/clientChargeReview"
+import ChargedSuccessfully from "./pages/chargedSuccessfully"
 
 function App() {
   return (
@@ -40,6 +41,10 @@ function App() {
             <Route
                 path='/resumoCobranca'
                 render={({ match, history }) => <ClientChargeReview history={ history }/>}
+            />
+            <Route
+                path='/cobrancaGerada'
+                render={({ match, history }) => <ChargedSuccessfully history={ history }/>}
             />
             <Route
                 path='/'

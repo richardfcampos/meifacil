@@ -1,11 +1,14 @@
 import React from 'react'
-import Header from "../../component/header";
-import styled from "styled-components"
-import BalloonMsg from "../../component/balloonMsg"
-import Button from "../../component/button"
+import Header from "../../component/header"
 import ShowValue from "../../component/showValue"
 import CharReviewList from "../../component/chargeReviewList"
-import { GoCreditCard} from "react-icons/all"
+import BalloonMsg from "../../component/balloonMsg"
+import Button from "../../component/button"
+import styled from "styled-components"
+import {GoCreditCard} from "react-icons/all"
+import ReactSVG from "react-svg"
+import CreditCard from '../../assets/img/credit-card.svg'
+import ShareDiv from "../../component/shareDiv"
 
 const TopDiv = styled.div`
   width: 100%;
@@ -34,12 +37,6 @@ const BottomDiv = styled.div`
     padding-right: 20px; 
 `
 
-const CrediCard = styled(GoCreditCard)`
-  font-size: 30px;
-  text-align: center;
-  position:relative;
-  margin-top: 7vw;
-`
 
 const ContainerCard = styled.div`
   display: flex;
@@ -47,11 +44,26 @@ const ContainerCard = styled.div`
   justify-content: center;
 `
 
+const ContainerMsg = styled.div`
+  text-align: center;
+  color: #0096af;
+  position: relative;
+  @media  (max-height: 650px){
+    margin-top: -10vw;
+  }
+`
 
+const Share = styled.div`
+  height: 70px;
+  width: 100%;
+  background: red;
+  position: fixed;
+  bottom: 30vw;
+  background: #fff;
+`
 
-const ClientChargeReview = (props) => {
+const ChargedSuccessfully = (props) => {
     const { history } = props
-
     const dados = {
         name: 'Richard Fonseca Campos',
         email: 'richardfcampos@gmail.com',
@@ -63,24 +75,28 @@ const ClientChargeReview = (props) => {
     const Continue = () => {
         history.push('/cobrancaGerada')
     }
+
     return (
         <>
             <Header title='Enviar nova Cobrança'
                     back={() => history.push('/dtVencCliente')}/>
             <ContainerCard>
-                <CrediCard />
-            </ContainerCard>
-            <TopDiv>
-                <ShowValue
-                    desc='Nome do Serviço'
-                    valStyle={{position: 'relative', bottom: '12vw'}}
-                    descStyle={{position: 'relative', bottom: '12vw'}}
+                <ReactSVG src={CreditCard}
+                           beforeInjection={svg => {
+                               svg.setAttribute('style', 'height: 70px;')
+                           }}
                 />
-            </TopDiv>
+            </ContainerCard>
+            <ContainerMsg>
+                <h2>Cobrança gerada com Sucesso!</h2>
+            </ContainerMsg>
+            <TopDiv />
             <BottomDiv>
                 <CharReviewList value={dados}/>
             </BottomDiv>
             <BalloonMsg />
+            <ShareDiv/>
+
             <Button name='ENVIAR COBRANÇA'
                     callback={ Continue }
             />
@@ -88,4 +104,4 @@ const ClientChargeReview = (props) => {
     )
 }
 
-export default ClientChargeReview
+export default ChargedSuccessfully
