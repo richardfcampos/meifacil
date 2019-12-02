@@ -9,6 +9,7 @@ import ClientInstallmentPlan from "./pages/clientInstallmentPlan"
 import ClientDueDate from "./pages/clientDuoDate"
 import ClientChargeReview from "./pages/clientChargeReview"
 import ChargedSuccessfully from "./pages/chargedSuccessfully"
+import DueDates from "./pages/dueDates"
 
 function App() {
   return (
@@ -48,7 +49,7 @@ function App() {
             />
             <Route
                 path='/cobrancaVencer'
-                render={({ match, history }) => <ChargedSuccessfully history={ history }/>}
+                render={({ match, history }) => <DueDates history={ history }/>}
             />
             <Route
                 path='/'

@@ -59,7 +59,7 @@ const Inicial = (props) => {
                     circNum='0'
                     label='A Vencer'
                     value={''}
-                    callback={() => alert()}
+                    callback={() => history.push('/cobrancaVencer')}
                 />
                 <Card
                     icon='late'

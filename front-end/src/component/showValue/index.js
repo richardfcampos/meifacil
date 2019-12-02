@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from "styled-components"
+import renderHTML from 'react-render-html'
 
 const ValueOutPut = styled.div`
   height: 20px;
@@ -41,7 +42,7 @@ const ShowValue = (props) => {
         </Container>
         <Container>
             <Description style={ descStyle }>
-                { desc }
+                { renderHTML(desc) }
             </Description>
         </Container>
         </>
