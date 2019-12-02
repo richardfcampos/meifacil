@@ -29,16 +29,18 @@ const Container = styled.div`
 `
 
 const ShowValue = (props) => {
-    const { value, desc } =  props
+    const { value, desc, valStyle={},  descStyle={}} =  props
     return (
         <>
         <Container>
-            <ValueOutPut value={(value) ? `R$ ${value}` : 'R$ 0,00' } >
+            <ValueOutPut
+                style={ valStyle }
+                value={(value) ? `R$ ${value}` : 'R$ 0,00' } >
                 {(value) ? `R$ ${value}` : 'R$ 0,00' }
             </ValueOutPut>
         </Container>
         <Container>
-            <Description>
+            <Description style={ descStyle }>
                 { desc }
             </Description>
         </Container>
