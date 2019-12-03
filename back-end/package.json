@@ -4,8 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon src/server.js --ignore __testes__",
+    "start": "node src/server.js --ignore __testes__",
     "composer:up": " docker-compose -f docker/docker-compose.yml up -d",
+    "db:up": " yarn sequelize db:migrate",
     "pretest": "NODE_ENV=test sequelize db:migrate",
     "test": "NODE_ENV=test jest",
     "posttest": "NODE_ENV=test sequelize db:migrate:undo:all"
