@@ -7,6 +7,8 @@ import styled from "styled-components"
 import ReactSVG from "react-svg"
 import CreditCard from '../../assets/img/credit-card.svg'
 import ShareDiv from "../../component/shareDiv"
+import { useSelector} from "react-redux";
+import moment from "moment";
 
 const TopDiv = styled.div`
   width: 100%;
@@ -54,12 +56,18 @@ const ContainerMsg = styled.div`
 
 const ChargedSuccessfully = (props) => {
     const { history } = props
+    const data = useSelector(state => state.charge)
+
+    console.log(data)
+    if (!data.name){
+        history.push('/')
+    }
     const dados = {
-        name: 'Richard Fonseca Campos',
-        email: 'richardfcampos@gmail.com',
-        duoDate: '11/10/2020',
-        product_service_price: '15,00',
-        installment_plan: '1'
+        name: data.name,
+        email: data.email,
+        duoDate: moment(data.due_date).format('DD/MM/YYYY'),
+        product_service_price: data.product_service_price.replace('.', ','),
+        installment_plan: data.installment_plan
     }
 
     const Continue = () => {

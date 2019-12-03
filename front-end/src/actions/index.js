@@ -58,3 +58,18 @@ export const setInstallmentPlan = async (dispatch, payload) => {
         payload: payload
     })
 }
+
+export const saveCharge = async (dispatch, payload) => {
+    api.post('/charge', payload)
+        .then( res => {
+            return (
+                dispatch({
+                    type: types.SET_lAST_CHARGE,
+                    payload: res.data
+                })
+            )
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}

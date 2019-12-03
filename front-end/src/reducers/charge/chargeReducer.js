@@ -7,7 +7,8 @@ const inicialState = {
     product_service_price: '',
     installment_plan: '',
     due_date: new Date(),
-    charges: []
+    charges: [],
+    last_charge: {}
 }
 
 export default (state=inicialState, action) => {
@@ -40,6 +41,10 @@ export default (state=inicialState, action) => {
         case types.SET_DUE_DATE:
             return {...state,
             due_date: action.payload
+            }
+        case types.SET_lAST_CHARGE:
+            return {...state,
+            last_charge: action.payload
             }
 
         default:

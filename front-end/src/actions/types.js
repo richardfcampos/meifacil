@@ -6,4 +6,5 @@ export const types = {
     SET_PRODUCT_SERVICE_PRICE: 'setProductServicePrice',
     SET_INSTALLMENT_PLAN: 'setInstallmentPlan',
     SET_DUE_DATE: 'setDueDate',
+    SET_lAST_CHARGE: 'setLastCharge',
 }

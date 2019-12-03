@@ -6,8 +6,9 @@ import Button from "../../component/button"
 import ShowValue from "../../component/showValue"
 import CharReviewList from "../../component/chargeReviewList"
 import { GoCreditCard} from "react-icons/all"
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import moment from "moment";
+import {saveCharge} from "../../actions";
 
 const TopDiv = styled.div`
   width: 100%;
@@ -54,6 +55,7 @@ const ContainerCard = styled.div`
 const ClientChargeReview = (props) => {
     const { history } = props
     const data = useSelector(state => state.charge)
+    const dispatch = useDispatch()
     const dados = {
         name: data.name,
         email: data.email,
@@ -62,7 +64,18 @@ const ClientChargeReview = (props) => {
         installment_plan: data.installment_plan
     }
 
-    const Continue = () => {
+    const toStore = {
+        name: data.name,
+        email: data.email,
+        due_date:moment(data.due_date).format('DD/MM/YYYY') ,
+        product_service_price: data.product_service_price.replace('.', '').replace(',', '.'),
+        product_service_description: data.product_service_description,
+        installment_plan: data.installment_plan
+    }
+
+
+    const Continue = async() => {
+        await saveCharge(dispatch, toStore)
         history.push('/cobrancaGerada')
     }
     return (

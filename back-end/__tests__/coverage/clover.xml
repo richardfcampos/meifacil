@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1575081610793" clover="3.2.0">
-  <project timestamp="1575081610793" name="All files">
-    <metrics statements="60" coveredstatements="55" conditionals="15" coveredconditionals="11" methods="13" coveredmethods="11" elements="88" coveredelements="77" complexity="0" loc="60" ncloc="60" packages="5" files="7" classes="7"/>
+<coverage generated="1575333081624" clover="3.2.0">
+  <project timestamp="1575333081624" name="All files">
+    <metrics statements="62" coveredstatements="57" conditionals="15" coveredconditionals="11" methods="13" coveredmethods="11" elements="90" coveredelements="79" complexity="0" loc="62" ncloc="62" packages="5" files="7" classes="7"/>
     <package name="src">
-      <metrics statements="20" coveredstatements="20" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="3"/>
+      <metrics statements="22" coveredstatements="22" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="3"/>
       <file name="app.js" path="/home/richard/Code/meiFacilDesafio/back-end/src/app.js">
         <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
@@ -16,19 +16,21 @@
         <line num="23" count="1" type="stmt"/>
       </file>
       <file name="routes.js" path="/home/richard/Code/meiFacilDesafio/back-end/src/routes.js">
-        <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.app.controller">

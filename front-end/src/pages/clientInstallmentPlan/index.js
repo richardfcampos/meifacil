@@ -10,7 +10,8 @@ import {setInstallmentPlan} from "../../actions";
 const ClientInstallmentPlan = (props) => {
     const { history } = props
     const dispatch = useDispatch()
-    const installment_plan = useSelector(state => state.charge.installment_plan)
+    let installment_plan = useSelector(state => state.charge.installment_plan)
+
     const product_service_price = useSelector(state => state.charge.product_service_price)
     if (!product_service_price) {
         history.push('/valorProdServCliente')
@@ -27,6 +28,10 @@ const ClientInstallmentPlan = (props) => {
     const setInstallmentPlanDis = async (selectedOption) => {
         await setInstallmentPlan(dispatch, selectedOption.value)
     }
+    if (!installment_plan) {
+        setInstallmentPlanDis(parcelas[0])
+    }
+
     const Continue = () => {
         history.push('/dtVencCliente')
     }
